@@ -15,4 +15,5 @@ galaxy_info:
         - wheezy
   categories:
     - rails
+    - monitoring
 dependencies: ["nginx"]
