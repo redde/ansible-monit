@@ -1,0 +1,23 @@
+---
+- name: Install package
+  apt:
+    name: monit
+    state: present
+    update_cache: yes
+    cache_valid_time: 900
+
+- name: Copy monitrc
+  copy: 
+    src: monitrc
+    dest: /etc/monit/monitrc
+    owner: root
+    group: root
+  notify: restart monit
+
+- name: Copy nginx monit config
+  copy: 
+    src: nginx.conf
+    dest: /etc/monit/conf.d/nginx.conf
+    owner: root
+    group: root
+  notify: restart monit
